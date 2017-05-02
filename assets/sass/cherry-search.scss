@@ -30,7 +30,7 @@ $backgrount-color: #fff;
 		width: 100%;
 		box-sizing: border-box;
 	}
-	&__results-list{
+	&__results-area{
 		display: none;
 		position: absolute;
 		width: 100%;
@@ -40,12 +40,6 @@ $backgrount-color: #fff;
 		z-index: 9999;
 		&.show{
 			display: block;
-		}
-		ul{
-			margin: 0 0 0 0;
-			li{
-				margin: 0 0 0 0;
-			}
 		}
 		&::-webkit-scrollbar {
 			width: 8px;
@@ -73,6 +67,31 @@ $backgrount-color: #fff;
 			}
 		}
 	}
+	&__results-holder{
+		display: none;
+		&.show{
+			display: block;
+		}
+	}
+	&__results-list{
+		overflow-x: hidden;
+		&-inner{
+			left: 0;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			transition: left 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+			position: relative;
+		}
+		ul{
+			margin: 0 0 0 0;
+			flex: 0 0 100%;
+			li{
+				margin: 0 0 0 0;
+			}
+		}
+	}
 	&__results-item{
 		list-style: none;
 		border-top: 1px solid $border-color;
@@ -94,9 +113,50 @@ $backgrount-color: #fff;
 			box-shadow: none;
 		}
 	}
-	&__more-button{
-		list-style: none;
+	&__results_count{
+		padding: 10px;
 		border-top: 1px solid $border-color;
+		background-color: $backgrount-color;
+	}
+	&__navigation_inner{
+		text-align: center;
+		padding: 10px;
+		overflow: auto;
+		border-top: 1px solid $border-color;
+	}
+	&__navigate-button{
+		border: none;
+		padding: 5px 8px;
+		background: none;
+
+		& + & {
+			margin-left: 5px;
+		}
+	}
+	&__next-button{
+		float: right;
+	}
+	&__prev-button{
+		float: left;
+	}
+
+	&__bullet-button{
+		border-radius: 50%;
+		border: 1px solid $border-color;
+		font-size: 0px;
+		width: 20px;
+		height: 20px;
+		&:hover, &.cherry-search__active-button{
+			background-color: $border-color;
+		}
+	}
+	&__number-button{
+		&:before {
+			content: attr( data-number );
+		}
+	}
+	&__more-button{
+		display: block;
 		background-color: $backgrount-color;
 		transition: all 0.4s ease-in-out;
 		text-align: center;
@@ -115,6 +175,15 @@ $backgrount-color: #fff;
 			height: auto;
 		}
 	}
+
+	&__post-meta{
+		& + &{
+			margin-left: 5px;
+			padding-left: 5px;
+			border-left: 1px solid $border-color;
+			text-transform: capitalize;
+		}
+	}
 	&__item-attr{
 		font-size: 14px;
 		flex: 1 1 auto;
@@ -122,8 +191,7 @@ $backgrount-color: #fff;
 	&__item-title, &__item-content, &__item-author{
 		display: block;
 		width: 100%;
-	}
-	&__item-content, &__item-author{
+		word-break: break-word;
 		margin: 5px 0 0 0;
 	}
 	&__item-author{

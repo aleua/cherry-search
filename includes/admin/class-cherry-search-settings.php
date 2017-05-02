@@ -382,6 +382,39 @@ if ( ! class_exists( 'Cherry_Search_Settings' ) ) {
 					'value'  => $this->get_setting( 'author_prefix', esc_html__( 'Posted by:', 'cherry-search' ) ),
 					'master' => 'author_visible',
 				),
+				'post_type_visible' => array(
+					'type'   => 'switcher',
+					'parent' => 'visual_settings',
+					'title'  => esc_html__( 'Show post type.', 'cherry-search' ),
+					'value'  => $this->get_setting( 'post_type_visible', true ),
+					'lock'  => $this->lock_option(),
+					'toggle' => array(
+						'true_toggle'  => esc_html__( 'Yes', 'cherry-search' ),
+						'false_toggle' => esc_html__( 'No', 'cherry-search' ),
+					),
+				),
+				'category_visible' => array(
+					'type'   => 'switcher',
+					'parent' => 'visual_settings',
+					'title'  => esc_html__( 'Show post categoryes.', 'cherry-search' ),
+					'value'  => $this->get_setting( 'category_visible', true ),
+					'lock'  => $this->lock_option(),
+					'toggle' => array(
+						'true_toggle'  => esc_html__( 'Yes', 'cherry-search' ),
+						'false_toggle' => esc_html__( 'No', 'cherry-search' ),
+					),
+				),
+				'post_tag_visible' => array(
+					'type'   => 'switcher',
+					'parent' => 'visual_settings',
+					'title'  => esc_html__( 'Show post tags.', 'cherry-search' ),
+					'value'  => $this->get_setting( 'post_tag_visible', true ),
+					'lock'  => $this->lock_option(),
+					'toggle' => array(
+						'true_toggle'  => esc_html__( 'Yes', 'cherry-search' ),
+						'false_toggle' => esc_html__( 'No', 'cherry-search' ),
+					),
+				),
 				'thumbnail_visible' => array(
 					'type'   => 'switcher',
 					'parent' => 'visual_settings',
@@ -413,11 +446,65 @@ if ( ! class_exists( 'Cherry_Search_Settings' ) ) {
 					'step_value' => 1,
 					'master'     => 'enable_scroll',
 				),
+				'post_count_visible'  => array(
+					'type'   => 'switcher',
+					'parent' => 'visual_settings',
+					'title'  => esc_html__( 'Enable results counter.', 'cherry-search' ),
+					'value'  => $this->get_setting( 'results_counter', false ),
+					'lock'   => $this->lock_option(),
+					'toggle' => array(
+						'true_toggle'  => esc_html__( 'Yes', 'cherry-search' ),
+						'false_toggle' => esc_html__( 'No', 'cherry-search' ),
+					),
+				),
+				'result_area_navigation' => array(
+					'type'    => 'radio',
+					'parent'  => 'visual_settings',
+					'title'   => esc_html__( 'Result area navigation:', 'cherry-search' ),
+					'value'   => $this->get_setting( 'result_area_navigation', 'more_button' ),
+					'options' => array(
+						'hide_navigation' => array(
+							'label' => esc_html__( 'Hide navigation', 'cherry-search' ),
+						),
+						'more_button' => array(
+							'label' => esc_html__( '"View more" button', 'cherry-search' ),
+							'slave' => 'more_button',
+						),
+						'bullet_pagination' => array(
+							'label' => esc_html__( 'Bullet pagination', 'cherry-search' ),
+							'lock'  => $this->lock_option(),
+						),
+						'number_pagination' => array(
+							'label' => esc_html__( 'Number pagination', 'cherry-search' ),
+							'lock'  => $this->lock_option(),
+						),
+						'navigation_button' => array(
+							'label' => esc_html__( 'Navigation button', 'cherry-search' ),
+							'lock'  => $this->lock_option(),
+							'slave' => 'navigation_button_element',
+						),
+					),
+				),
 				'more_button'      => array(
-					'type'          => 'text',
-					'parent'        => 'visual_settings',
-					'title'         => esc_html__( '"View more" button text.', 'cherry-search' ),
-					'value'         => $this->get_setting( 'more_button', esc_html__( 'View more.', 'cherry-search' ) ),
+					'type'   => 'text',
+					'parent' => 'visual_settings',
+					'title'  => esc_html__( '"View more" button text.', 'cherry-search' ),
+					'value'  => $this->get_setting( 'more_button', esc_html__( 'View more.', 'cherry-search' ) ),
+					'master' => 'more_button',
+				),
+				'prev_button'      => array(
+					'type'   => 'text',
+					'parent' => 'visual_settings',
+					'title'  => esc_html__( '"Prev" button text.', 'cherry-search' ),
+					'value'  => $this->get_setting( 'prev_button', esc_html__( '< Prev', 'cherry-search' ) ),
+					'master' => 'navigation_button_element',
+				),
+				'next_button'      => array(
+					'type'   => 'text',
+					'parent' => 'visual_settings',
+					'title'  => esc_html__( '"Next" button text.', 'cherry-search' ),
+					'value'  => $this->get_setting( 'next_button', esc_html__( 'Next >', 'cherry-search' ) ),
+					'master' => 'navigation_button_element',
 				),
 
 // Notice Messages
@@ -454,6 +541,25 @@ if ( ! class_exists( 'Cherry_Search_Settings' ) ) {
 					'form'          => 'chery-search-settings-form',
 				),
 			);
+		}
+
+		/**
+		 * Check included pro version plugin.
+		 *
+		 * @since 1.2.0
+		 * @access private
+		 * @return void
+		 */
+		private function lock_option() {
+			if ( defined( 'CHERRY_SEARCH_PRO_INIT' ) && CHERRY_SEARCH_PRO_INIT ) {
+				return false;
+			} else {
+				return array(
+					'label' => esc_html__( 'Unlocked in PRO', 'cherry-search' ),
+					'url'   => esc_url('#'),
+					'icon'  => '<i class="fa fa-unlock-alt" aria-hidden="true"></i>',
+				);
+			}
 		}
 
 		/**

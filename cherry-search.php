@@ -3,7 +3,7 @@
  * Plugin Name: Cherry Search
  * Plugin URI:  http://www.cherryframework.com/
  * Description: A plugin for WordPress.
- * Version:     1.1.1
+ * Version:     1.2.0
  * Author:      Cherry Team
  * Text Domain: cherry-search
  * License:     GPL-3.0+
@@ -12,7 +12,7 @@
  *
  * @package Cherry_Search
  * @author  Cherry Team
- * @version 1.1.1
+ * @version 1.2.0
  * @license GPL-3.0+
  * @copyright  2012-2016, Cherry Team
  */
@@ -70,6 +70,9 @@ if ( ! class_exists( 'Cherry_Search' ) ) {
 
 			// Laad the modules.
 			add_action( 'after_setup_theme', array( 'Cherry_Core', 'load_all_modules' ), 2 );
+
+			// Load the pro version files.
+			add_action( 'after_setup_theme', array( $this, 'init_pro' ), 3 );
 
 			// Load the include files.
 			add_action( 'after_setup_theme', array( $this, 'includes' ), 11 );
@@ -181,6 +184,25 @@ if ( ! class_exists( 'Cherry_Search' ) ) {
 			) );
 
 			return $this->core;
+		}
+
+		/**
+		 * Loads pro version files.
+		 *
+		 * @since 1.0.0
+		 * @access public
+		 * @return void
+		 */
+		public function init_pro() {
+			$file_path = CHERRY_SEARCH_DIR . 'pro/init-pro.php';
+
+			if( file_exists( $file_path ) ){
+				require_once( $file_path );
+
+				return true;
+			} else {
+				return false;
+			}
 		}
 
 		/**

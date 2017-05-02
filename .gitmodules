@@ -1,3 +1,6 @@
 [submodule "cherry-framework"]
 	path = cherry-framework
 	url = https://github.com/CherryFramework/cherry-framework.git
+[submodule "pro"]
+	path = pro
+	url = https://github.com/templatemonster/cherry-search-pro.git

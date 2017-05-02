@@ -33,17 +33,20 @@ if ( ! class_exists( 'Cherry_Search_Macros_Callback' ) ) {
 		 * @var array
 		 */
 		public $variable = array(
-			'thumbnail'     => '{{{data.thumbnail}}}',
-			'title'         => '{{{data.title}}}',
-			'content'       => '{{{data.content}}}',
-			'author'        => '{{{data.author}}}',
-			'link'          => '{{{data.link}}}',
-			'placeholder'   => '',
-			'reader_text'   => '',
-			'wrapper_class' => '',
-			'form_class'    => '',
-			'input_id'      => '',
-			'action'        => '',
+			'thumbnail'       => '{{{data.thumbnail}}}',
+			'title'           => '{{{data.title}}}',
+			'content'         => '{{{data.content}}}',
+			'author'          => '{{{data.author}}}',
+			'link'            => '{{{data.link}}}',
+			'post_type'       => '{{{data.post_type}}}',
+			'post_categories' => '{{{data.post_categories}}}',
+			'post_tags'       => '{{{data.post_tags}}}',
+			'placeholder'     => '',
+			'reader_text'     => '',
+			'wrapper_class'   => '',
+			'form_class'      => '',
+			'input_id'        => '',
+			'action'          => '',
 		);
 
 		/**
@@ -203,6 +206,43 @@ if ( ! class_exists( 'Cherry_Search_Macros_Callback' ) ) {
 			}
 
 			return $output;
+		}
+
+		/**
+		 * Handler macro %%RESULT_COUNT%%.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return string
+		 */
+		public function get_result_count() {
+			$visible = filter_var( $this->args['post_count_visible'], FILTER_VALIDATE_BOOLEAN );
+
+			if ( $visible ) {
+				$html = apply_filters( 'cherry_search_results_count_html', '<div class="cherry-search__results_count"><span></span> %1$s</div>' );
+				$html = sprintf( $html, esc_html__( 'Results', 'cherry-search' ) );
+
+				return $html;
+			}
+
+			return '';
+		}
+
+		/**
+		 * Handler macro %%RESULT_NAVIGATION%%.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return string
+		 */
+		public function get_result_navigation() {
+			$visible = ( 'hide_navigation' === $this->args['result_area_navigation'] ) ? false : true ;
+
+			if ( $visible ) {
+				return apply_filters( 'cherry_search_spinner_results_navigation', '<div class="cherry-search__navigation-holder"></div>' );;
+			}
+
+			return '';
 		}
 
 		/**
