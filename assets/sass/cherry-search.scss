@@ -113,7 +113,7 @@ $backgrount-color: #fff;
 			box-shadow: none;
 		}
 	}
-	&__results_count{
+	&__results-count{
 		padding: 10px;
 		border-top: 1px solid $border-color;
 		background-color: $backgrount-color;
@@ -155,7 +155,9 @@ $backgrount-color: #fff;
 			content: attr( data-number );
 		}
 	}
-	&__more-button{
+	&__full-result{
+		width: 100%;
+		border:none;
 		display: block;
 		background-color: $backgrount-color;
 		transition: all 0.4s ease-in-out;

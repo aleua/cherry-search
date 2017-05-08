@@ -450,7 +450,7 @@ if ( ! class_exists( 'Cherry_Search_Settings' ) ) {
 					'type'   => 'switcher',
 					'parent' => 'visual_settings',
 					'title'  => esc_html__( 'Enable results counter.', 'cherry-search' ),
-					'value'  => $this->get_setting( 'results_counter', false ),
+					'value'  => $this->get_setting( 'post_count_visible', false ),
 					'lock'   => $this->lock_option(),
 					'toggle' => array(
 						'true_toggle'  => esc_html__( 'Yes', 'cherry-search' ),

@@ -14,7 +14,7 @@
 			listInnerClass: '.cherry-search__results-list-inner',
 			itemClass: '.cherry-search__results-item',
 			messageHolder: '.cherry-search__message',
-			countClass: '.cherry-search__results_count span',
+			countClass: '.cherry-search__results-count span',
 
 			navigationClass: '.cherry-search__navigation-holder',
 			bulletClass: '.cherry-search__bullet-button',
@@ -24,7 +24,7 @@
 			nextClass: '.cherry-search__next-button',
 
 			spinner: '.cherry-search__spinner',
-			moreButton: '.cherry-search__more-button',
+			fullResult: '.cherry-search__full-result',
 			searchHandlerId: 'cherry_search_public_action'
 		},
 
@@ -153,7 +153,7 @@
 				event.stopPropagation();
 			};
 
-			self.clickMoreButton = function() {
+			self.clickFullResult = function() {
 				$( settings.searchFormClass, self ).submit();
 			};
 
@@ -198,7 +198,7 @@
 
 			$( self )
 				.on( 'click' + settings.searchFormWrapperClass, self.formClick )
-				.on( 'click' + settings.searchFormWrapperClass, settings.moreButton, self.clickMoreButton )
+				.on( 'click' + settings.searchFormWrapperClass, settings.fullResult, self.clickFullResult )
 				.on( 'click' + settings.searchFormWrapperClass, settings.bulletClass, self.clickBulletHandler )
 				.on( 'click' + settings.searchFormWrapperClass, settings.numberClass, self.clickBulletHandler )
 				.on( 'click' + settings.searchFormWrapperClass, settings.prevClass, self.clickNavigationButtonHandler )

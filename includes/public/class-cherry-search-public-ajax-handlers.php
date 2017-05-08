@@ -214,7 +214,7 @@ if ( ! class_exists( 'Cherry_Search_Public_Ajax_Handlers' ) ) {
 					break;
 
 					default:
-						$more_button_html = apply_filters( 'cherry_search_more_button_html', '<span class="cherry-search__more-button">%s</span>' );
+						$more_button_html = apply_filters( 'cherry_search_more_button_html', '<button class="cherry-search__full-result">%s</button>' );
 						$buttons          = sprintf( $more_button_html, esc_html( $settings['more_button'] ) );
 					break;
 				}

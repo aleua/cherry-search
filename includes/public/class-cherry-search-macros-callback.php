@@ -157,7 +157,6 @@ if ( ! class_exists( 'Cherry_Search_Macros_Callback' ) ) {
 			$text = $this->args['search_button_text'];
 
 			if ( $text ) {
-
 				return sprintf( apply_filters( 'cherry_search_submite_text', '<span class="cherry-search__submite_text">%s</span>' ), esc_html( $text ) );
 			} else {
 				return;
@@ -219,7 +218,7 @@ if ( ! class_exists( 'Cherry_Search_Macros_Callback' ) ) {
 			$visible = filter_var( $this->args['post_count_visible'], FILTER_VALIDATE_BOOLEAN );
 
 			if ( $visible ) {
-				$html = apply_filters( 'cherry_search_results_count_html', '<div class="cherry-search__results_count"><span></span> %1$s</div>' );
+				$html = apply_filters( 'cherry_search_results_count_html', '<div class="cherry-search__results-count"><button class="cherry-search__full-result"><span></span> %1$s</button></div>' );
 				$html = sprintf( $html, esc_html__( 'Results', 'cherry-search' ) );
 
 				return $html;
