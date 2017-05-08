@@ -114,9 +114,13 @@ $backgrount-color: #fff;
 		}
 	}
 	&__results-count{
-		padding: 10px;
-		border-top: 1px solid $border-color;
-		background-color: $backgrount-color;
+		.cherry-search__full-result{
+			width:auto;
+
+		}
+		& + * {
+			border-top: 1px solid $border-color;
+		}
 	}
 	&__navigation_inner{
 		text-align: center;

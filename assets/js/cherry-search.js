@@ -14,7 +14,7 @@
 			listInnerClass: '.cherry-search__results-list-inner',
 			itemClass: '.cherry-search__results-item',
 			messageHolder: '.cherry-search__message',
-			countClass: '.cherry-search__results-count span',
+			countClass: '.cherry-search__results-count',
 
 			navigationClass: '.cherry-search__navigation-holder',
 			bulletClass: '.cherry-search__bullet-button',
@@ -111,7 +111,7 @@
 							}
 						}
 
-						countHolder.html( date.post_count );
+						$( 'span', countHolder ).html( date.post_count );
 						resultsListInner
 							.html( outputHtml )
 							.attr( 'data-columns', date.columns );
