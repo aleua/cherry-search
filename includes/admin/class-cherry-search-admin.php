@@ -62,8 +62,7 @@ if ( ! class_exists( 'Cherry_Search_Admin' ) ) {
 		 */
 		public function includes() {
 
-			// Include plugin settings and ajax handlers.
-			require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/admin/class-cherry-search-settings.php' );
+			// Include plugin ajax handlers.
 			require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/admin/class-cherry-search-ajax-handlers.php' );
 
 			// Include plugin pages.

@@ -1,3 +1,5 @@
+@import 'rtl';
+
 $border-color: #ccc;
 $backgrount-color: #fff;
 
@@ -132,6 +134,7 @@ $backgrount-color: #fff;
 		border: none;
 		padding: 5px 8px;
 		background: none;
+		color: inherit;
 
 		& + & {
 			margin-left: 5px;
@@ -164,6 +167,7 @@ $backgrount-color: #fff;
 		border:none;
 		display: block;
 		background-color: $backgrount-color;
+		color: inherit;
 		transition: all 0.4s ease-in-out;
 		text-align: center;
 		padding: 10px;

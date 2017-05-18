@@ -1,0 +1,11 @@
+.rtl{
+	& .cherry-search{
+		text-align: right;
+		&__results-item{
+			text-align: inherit;
+		}
+		&__item-thumbnail{
+			margin: 0 0 0 10px;
+		}
+	}
+}

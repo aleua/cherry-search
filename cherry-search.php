@@ -157,15 +157,18 @@ if ( ! class_exists( 'Cherry_Search' ) ) {
 						'autoload'  => true,
 					),
 					'cherry-toolkit'           => array(
+						'autoload' => true,
+					),
+					'cherry-widget-factory' => array(
 						'autoload' => false,
 					),
 					'cherry-utility'           => array(
 						'autoload' => false,
 					),
-					'cherry-ui-elements'       => array(
+					'cherry-interface-builder' => array(
 						'autoload' => false,
 					),
-					'cherry-interface-builder' => array(
+					'cherry-ui-elements'       => array(
 						'autoload' => false,
 					),
 					'cherry-handler'           => array(
@@ -213,17 +216,18 @@ if ( ! class_exists( 'Cherry_Search' ) ) {
 		 * @return void
 		 */
 		public function includes() {
-
-			require_once( CHERRY_SEARCH_DIR . 'includes/public/class-cherry-search-settings-manager.php' );
-			require_once( CHERRY_SEARCH_DIR . 'includes/public/class-cherry-search-public-ajax-handlers.php' );
+			require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/admin/class-cherry-search-settings.php' );
+			require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/public/class-cherry-search-settings-manager.php' );
+			require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/public/class-cherry-search-public-ajax-handlers.php' );
 
 			if ( is_admin() ) {
-				require_once( CHERRY_SEARCH_DIR . 'includes/admin/class-cherry-search-admin.php' );
+				require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/admin/class-cherry-search-admin.php' );
 			} else {
-				require_once( CHERRY_SEARCH_DIR . 'includes/public/class-cherry-search-macros-callback.php' );
-				require_once( CHERRY_SEARCH_DIR . 'includes/public/class-cherry-search-form-public.php' );
-				require_once( CHERRY_SEARCH_DIR . 'includes/public/class-cherry-search-form-shortcode.php' );
+				require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/public/class-cherry-search-macros-callback.php' );
+				require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/public/class-cherry-search-form-public.php' );
+				require_once( trailingslashit( CHERRY_SEARCH_DIR ) . 'includes/public/shortcodes/class-cherry-search-form-shortcode.php' );
 			}
+
 		}
 
 		/**

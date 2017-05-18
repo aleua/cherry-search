@@ -31,52 +31,52 @@ if ( ! class_exists( 'Cherry_Search_Settings' ) ) {
 		 *
 		 * @since 1.0.0
 		 * @var array
-		 * @access protected
+		 * @access public
 		 */
-		protected $section = null;
+		public $section = null;
 
 		/**
 		 * Tab component on settings page.
 		 *
 		 * @since 1.0.0
 		 * @var array
-		 * @access protected
+		 * @access public
 		 */
-		protected $component_tab = null;
+		public $component_tab = null;
 
 		/**
 		 * Tabs on settings page.
 		 *
 		 * @since 1.0.0
 		 * @var array
-		 * @access protected
+		 * @access public
 		 */
-		protected $tabs = null;
+		public $tabs = null;
 
 		/**
 		 * Info section on settings page.
 		 *
 		 * @since 1.0.0
 		 * @var array
-		 * @access protected
+		 * @access public
 		 */
-		protected $info = null;
+		public $info = null;
 
 		/**
 		 * Settings section on settings page.
 		 *
 		 * @since 1.0.0
 		 * @var array
-		 * @access protected
+		 * @access public
 		 */
-		protected $settings = null;
+		public $settings = null;
 
 		/**
 		 * Default settings.
 		 *
 		 * @since 1.0.0
 		 * @var array
-		 * @access protected
+		 * @access private
 		 */
 		private $settings_default = array();
 
