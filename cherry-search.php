@@ -1,10 +1,11 @@
 <?php
 /**
  * Plugin Name: Cherry Search
- * Plugin URI:  http://www.cherryframework.com/
+ * Plugin URI:  https://jetimpex.com/wordpress/
  * Description: A plugin for WordPress.
- * Version:     1.2.0
- * Author:      Cherry Team
+ * Version:     1.1.4
+ * Author:      Jetimpex
+ * Author URI:  https://jetimpex.com/wordpress/
  * Text Domain: cherry-search
  * License:     GPL-3.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.txt
@@ -12,7 +13,7 @@
  *
  * @package Cherry_Search
  * @author  Cherry Team
- * @version 1.2.0
+ * @version 1.1.4
  * @license GPL-3.0+
  * @copyright  2012-2016, Cherry Team
  */
@@ -95,7 +96,7 @@ if ( ! class_exists( 'Cherry_Search' ) ) {
 			 *
 			 * @since 1.0.0
 			 */
-			define( 'CHERRY_SEARCH_VERSION', '1.1.1' );
+			define( 'CHERRY_SEARCH_VERSION', '1.1.4' );
 
 			/**
 			 * Set the slug of the plugin.
